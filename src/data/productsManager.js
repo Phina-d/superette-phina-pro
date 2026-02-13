@@ -1,27 +1,27 @@
-const STORAGE_KEY = "PHINA_PRODUCTS";
+import { products } from "./products";
 
+// 🔹 Récupère tous les produits
 export function getProducts() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  return products;
 }
 
-export function saveProducts(products) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+// 🔹 FAVORIS
+export function getFavorites() {
+  const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+  return favs;
 }
 
-export function addProduct(product) {
-  const products = getProducts();
-  products.push({ id: Date.now(), ...product });
-  saveProducts(products);
+export function addToFavorites(product) {
+  const favs = getFavorites();
+  if (!favs.some(p => p.id === product.id)) {
+    favs.push(product);
+    localStorage.setItem("favorites", JSON.stringify(favs));
+  }
+  return favs;
 }
 
-export function updateProduct(updated) {
-  const products = getProducts().map((p) =>
-    p.id === updated.id ? updated : p
-  );
-  saveProducts(products);
-}
-
-export function deleteProduct(id) {
-  const products = getProducts().filter((p) => p.id !== id);
-  saveProducts(products);
+export function removeFromFavorites(id) {
+  const favs = getFavorites().filter(p => p.id !== id);
+  localStorage.setItem("favorites", JSON.stringify(favs));
+  return favs;
 }

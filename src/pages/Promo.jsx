@@ -9,37 +9,29 @@ import banner3 from "../assets/banners/banner3.jpg";
 
 export default function Promo() {
   const [products, setProducts] = useState([]);
-  const [timeLeft, setTimeLeft] = useState(7200); // 2h promo
+  const [timeLeft, setTimeLeft] = useState(7200);
   const banners = [banner1, banner2, banner3];
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const all = getProducts();
-    const promos = all.filter(
-      (p) =>
-        p.promo === true ||
-        (p.oldPrice && Number(p.oldPrice) > Number(p.price))
+    const allProducts = getProducts();
+    const promoProducts = allProducts.filter(
+      p => p.promo === true || (p.oldPrice && Number(p.oldPrice) > Number(p.price))
     );
-    setProducts(promos);
+    setProducts(promoProducts);
   }, []);
 
-  // ⏳ compteur promo
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((t) => (t > 0 ? t - 1 : 0));
-    }, 1000);
+    const timer = setInterval(() => setTimeLeft(t => (t > 0 ? t - 1 : 0)), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // 🎞️ slider images
   useEffect(() => {
-    const slider = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % banners.length);
-    }, 4000);
+    const slider = setInterval(() => setCurrent(prev => (prev + 1) % banners.length), 4000);
     return () => clearInterval(slider);
   }, []);
 
-  const formatTime = (s) => {
+  const formatTime = s => {
     const h = String(Math.floor(s / 3600)).padStart(2, "0");
     const m = String(Math.floor((s % 3600) / 60)).padStart(2, "0");
     const sec = String(s % 60).padStart(2, "0");
@@ -48,37 +40,27 @@ export default function Promo() {
 
   return (
     <div className="promo-page">
-      {/* 🎞️ BANNIÈRE IMAGE */}
       <div className="promo-banner-img">
         {banners.map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            alt="Promo banner"
-            className={index === current ? "active" : ""}
-          />
+          <img key={index} src={img} alt="Promo banner" className={index === current ? "active" : ""} />
         ))}
-
         <div className="promo-banner-overlay">
           <h1>🔥 Flash Promotions</h1>
           <p>Jusqu’à -50% chez Supérette Chez Phina</p>
         </div>
       </div>
 
-      {/* ⏳ Compteur */}
       <div className="promo-timer">
         ⏳ Fin des promos dans : <strong>{formatTime(timeLeft)}</strong>
       </div>
 
-      {/* 🛍️ Produits */}
       <section className="promo-products">
         <h2>🔥 Produits en promotion</h2>
-
         {products.length === 0 ? (
           <p className="empty">Aucun produit en promotion 😢</p>
         ) : (
           <div className="products-grid">
-            {products.map((p) => (
+            {products.map(p => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
