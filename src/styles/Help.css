@@ -1,0 +1,129 @@
+.help-page {
+  min-height: 100vh;
+  padding: 40px 20px 70px;
+  background: linear-gradient(135deg, #f9fafc, #ffffff);
+}
+
+/* HEADER */
+.help-header {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.help-header h1 {
+  font-size: 2.2rem;
+  color: #ff7a18;
+  margin-bottom: 10px;
+}
+
+.help-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* ACTIONS */
+.help-actions {
+  max-width: 900px;
+  margin: 0 auto 35px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.help-actions button,
+.help-actions a {
+  padding: 12px 22px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.help-actions button:hover,
+.help-actions a:hover {
+  transform: translateY(-3px);
+}
+
+/* SECTIONS */
+.help-sections {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.help-card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.help-card:hover {
+  transform: translateY(-6px);
+}
+
+.help-card h3 {
+  color: #ff7a18;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.help-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* CONTACT */
+.help-contact {
+  max-width: 900px;
+  margin: 50px auto 0;
+  text-align: center;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  padding: 30px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.help-contact h2 {
+  margin-bottom: 10px;
+}
+
+.help-contact-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.help-contact-actions a {
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: white;
+  color: #ff7a18;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.help-contact-actions a:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .help-header h1 {
+    font-size: 1.7rem;
+  }
+}

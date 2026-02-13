@@ -1,0 +1,66 @@
+.cgv-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafc, #ffffff);
+  padding-bottom: 60px;
+}
+
+/* HEADER */
+.cgv-header {
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cgv-header h1 {
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+}
+
+.cgv-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* CONTENU */
+.cgv-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cgv-section {
+  background: white;
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.cgv-section:hover {
+  transform: translateY(-4px);
+}
+
+.cgv-section h2 {
+  color: #ff7a18;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.cgv-section p {
+  color: #555;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .cgv-header h1 {
+    font-size: 1.7rem;
+  }
+}

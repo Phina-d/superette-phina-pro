@@ -1,0 +1,142 @@
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+}
+
+.admin-sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.admin-sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: 0.2s;
+}
+
+.admin-sidebar a:hover {
+  background: #1e293b;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.admin-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  font-size: 16px;
+  text-align: center;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+  background: #f1f5f9;
+  text-align: left;
+}
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.admin-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.admin-form button {
+  grid-column: span 3;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #16a34a;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-form button:hover {
+  opacity: 0.9;
+}
+
+.admin-search {
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.admin-table button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.admin-logout-btn {
+  margin-top: 20px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-logout-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+.admin-logout-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff4d4d, #ff0000);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-logout-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+

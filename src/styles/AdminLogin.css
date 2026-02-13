@@ -1,0 +1,76 @@
+.admin-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.admin-login-box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.admin-login-box h2 {
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.admin-login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+}
+
+.admin-login-box input:focus {
+  border-color: #2563eb;
+}
+
+.admin-login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-login-box button:hover {
+  background: #1d4ed8;
+}
+
+.admin-error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.admin-login-page {
+  min-height: 100vh; /* prend toute la hauteur de l’écran */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centre le formulaire */
+  align-items: center;
+  background: linear-gradient(135deg, #f7f7f7, #eaeaea);
+}
+
+/* Formulaire login */
+.admin-login-box {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}

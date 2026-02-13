@@ -1,0 +1,173 @@
+/* 🎞️ BANNIÈRE IMAGE PROMO */
+.promo-banner-img {
+  position: relative;
+  height: 260px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  margin-bottom: 25px;
+}
+
+.promo-banner-img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 6s linear;
+}
+
+.promo-banner-img img.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* overlay texte */
+.promo-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  color: white;
+}
+
+.promo-banner-overlay h1 {
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.promo-banner-overlay p {
+  font-size: 18px;
+  margin-top: 8px;
+  opacity: 0.95;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .promo-banner-img {
+    height: 160px;
+  }
+
+  .promo-banner-overlay h1 {
+    font-size: 26px;
+  }
+
+  .promo-banner-overlay {
+    padding-left: 20px;
+  }
+}
+
+
+/* =========================
+   PAGE PROMO ULTRA MODERNE
+========================= */
+.promo-page {
+  padding: 30px 5%;
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  min-height: 100vh;
+}
+
+/* 🎞️ Slider banner */
+.promo-slider {
+  position: relative;
+  height: 220px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dc2626, #f97316, #facc15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  margin-bottom: 25px;
+  animation: gradientMove 6s infinite alternate;
+}
+
+@keyframes gradientMove {
+  0% { background-position: left; }
+  100% { background-position: right; }
+}
+
+.slide {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.promo-slider h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.promo-slider p {
+  font-size: 18px;
+  margin-top: 8px;
+  opacity: 0.95;
+}
+
+/* ⏳ Timer */
+.promo-timer {
+  margin: 18px auto 30px;
+  background: white;
+  padding: 12px 22px;
+  border-radius: 14px;
+  display: inline-flex;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #dc2626;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.promo-timer strong {
+  background: #111827;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-family: monospace;
+}
+
+/* 🛍️ Produits */
+.promo-products h2 {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 18px;
+  color: #111827;
+}
+
+.empty {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+  color: #6b7280;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .promo-slider {
+    height: 160px;
+  }
+
+  .promo-slider h1 {
+    font-size: 28px;
+  }
+
+  .promo-products h2 {
+    font-size: 22px;
+  }
+}

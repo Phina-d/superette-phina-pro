@@ -1,0 +1,193 @@
+.support-page {
+  background: #f6f7f9;
+  padding-bottom: 60px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* HERO */
+.support-hero {
+  background: linear-gradient(135deg, #ff6a00, #ffb347);
+  color: white;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.support-hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.support-hero p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* BUTTONS */
+.support-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-support {
+  padding: 12px 30px;
+  border-radius: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.25s;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btn-support.whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.btn-support.call {
+  background: white;
+  color: #ff6a00;
+}
+
+.btn-support:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* SERVICES */
+.support-services {
+  padding: 50px 8%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.support-card {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.support-card:hover {
+  transform: translateY(-6px);
+}
+
+.support-card h3 {
+  color: #ff6a00;
+  margin-bottom: 8px;
+}
+
+/* GRID FORM + MAP */
+.support-grid {
+  padding: 40px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+}
+
+/* FORM */
+.support-form {
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.support-form h2 {
+  margin-bottom: 15px;
+  color: #ff6a00;
+}
+
+.support-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.support-form input,
+.support-form textarea {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.support-form textarea {
+  resize: none;
+  height: 110px;
+}
+
+.support-form button {
+  background: linear-gradient(135deg, #ff6a00, #ffb347);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.support-form button:hover {
+  transform: scale(1.03);
+}
+
+/* MAP */
+.support-map {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.support-map iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+
+.map-info p {
+  font-size: 0.95rem;
+  margin: 4px 0;
+}
+
+/* FAQ */
+.support-faq {
+  padding: 50px 10%;
+}
+
+.support-faq h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff6a00;
+}
+
+.support-faq details {
+  background: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+}
+
+.support-faq summary {
+  font-weight: bold;
+  color: #333;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .support-hero h1 {
+    font-size: 2rem;
+  }
+}

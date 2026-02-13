@@ -1,0 +1,48 @@
+.category-section {
+  margin: 40px auto;
+  padding: 0 20px;
+  max-width: 1500px;
+}
+
+.category-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* grille premium */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+.category-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
+}
+
+.category-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.category-card p {
+  font-size: 14px;
+  font-weight: 600;
+}

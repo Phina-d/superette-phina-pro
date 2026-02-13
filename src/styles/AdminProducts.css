@@ -1,0 +1,167 @@
+/* ===============================
+   ADMIN PRODUCTS (isolé)
+=================================*/
+
+.admin-products {
+  padding: 20px;
+}
+
+/* ===== FORM ===== */
+.admin-products-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.admin-products .form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.admin-products input,
+.admin-products select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.admin-products input:focus,
+.admin-products select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Upload */
+.admin-products .upload-box img {
+  margin-top: 10px;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Button */
+.admin-products .btn-submit {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.admin-products .btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== SEARCH ===== */
+.admin-products-search {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* ===== TABLE ===== */
+.admin-products-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.admin-products-table th {
+  background: #f1f5f9;
+  padding: 14px;
+  text-align: left;
+}
+
+.admin-products-table td {
+  padding: 12px;
+  border-top: 1px solid #eee;
+}
+
+.admin-products-table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.admin-products .old-price {
+  text-decoration: line-through;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Buttons */
+.admin-products-table button {
+  border: none;
+  background: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-products-table button:hover {
+  background: #e2e8f0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  .admin-products-table thead {
+    display: none;
+  }
+
+  .admin-products-table,
+  .admin-products-table tbody,
+  .admin-products-table tr,
+  .admin-products-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-products-table tr {
+    margin-bottom: 15px;
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+
+  .admin-products-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border: none;
+  }
+
+  .admin-products-table td::before {
+    font-weight: bold;
+    color: #555;
+  }
+
+  .admin-products-table td:nth-child(1)::before { content: "Image"; }
+  .admin-products-table td:nth-child(2)::before { content: "Nom"; }
+  .admin-products-table td:nth-child(3)::before { content: "Prix"; }
+  .admin-products-table td:nth-child(4)::before { content: "Catégorie"; }
+  .admin-products-table td:nth-child(5)::before { content: "Stock"; }
+  .admin-products-table td:nth-child(6)::before { content: "Actions"; }
+}
