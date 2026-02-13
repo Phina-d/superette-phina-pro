@@ -25,3 +25,10 @@ export function removeFromFavorites(id) {
   localStorage.setItem("favorites", JSON.stringify(favs));
   return favs;
 }
+export function updateProduct(id, newData) {
+  const index = products.findIndex(p => p.id === id);
+  if (index !== -1) {
+    products[index] = { ...products[index], ...newData };
+  }
+  return products[index];
+}
