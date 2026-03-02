@@ -1,49 +1,48 @@
-import { products } from "./products";
+import { products as defaultProducts } from "./products";
 
-// 🔹 Récupère tous les produits
+const STORAGE_KEY = "PHINA_PRODUCTS";
+
 export function getProducts() {
-  return products;
-}
+  const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-// 🔹 AJOUTER un produit
-export function addProduct(newProduct) {
-  // Génère un id unique si absent
-  if (!newProduct.id) newProduct.id = Date.now();
-  products.push(newProduct);
-  return products;
-}
-
-// 🔹 SUPPRIMER un produit par id
-export function deleteProduct(id) {
-  const index = products.findIndex(p => p.id === id);
-  if (index !== -1) products.splice(index, 1);
-  return products;
-}
-
-// 🔹 METTRE À JOUR un produit
-export function updateProduct(updatedProduct) {
-  const index = products.findIndex(p => p.id === updatedProduct.id);
-  if (index !== -1) products[index] = { ...products[index], ...updatedProduct };
-  return products;
-}
-
-// 🔹 FAVORIS
-export function getFavorites() {
-  const favs = JSON.parse(localStorage.getItem("favorites")) || [];
-  return favs;
-}
-
-export function addToFavorites(product) {
-  const favs = getFavorites();
-  if (!favs.some(p => p.id === product.id)) {
-    favs.push(product);
-    localStorage.setItem("favorites", JSON.stringify(favs));
+  // Si aucun produit en localStorage
+  if (!stored || stored.length === 0) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultProducts));
+    return defaultProducts;
   }
-  return favs;
+
+  // 🔥 Fusion automatique (garde anciens + ajoute nouveaux)
+  const merged = [...stored];
+
+  defaultProducts.forEach((def) => {
+    const exists = merged.find((p) => p.id === def.id);
+    if (!exists) {
+      merged.push(def);
+    }
+  });
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+  return merged;
 }
 
-export function removeFromFavorites(id) {
-  const favs = getFavorites().filter(p => p.id !== id);
-  localStorage.setItem("favorites", JSON.stringify(favs));
-  return favs;
+export function saveProducts(products) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+}
+
+export function addProduct(product) {
+  const products = getProducts();
+  products.push({ id: Date.now(), ...product });
+  saveProducts(products);
+}
+
+export function updateProduct(updated) {
+  const products = getProducts().map((p) =>
+    p.id === updated.id ? updated : p
+  );
+  saveProducts(products);
+}
+
+export function deleteProduct(id) {
+  const products = getProducts().filter((p) => p.id !== id);
+  saveProducts(products);
 }

@@ -13,3 +13,24 @@
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px;
 }
+.home-african-food {
+  margin: 60px 0;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #fff8f0, #ffe8d6);
+  border-radius: 16px;
+}
+
+.home-african-food h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #d35400;
+  font-weight: bold;
+}
+
+.home-african-food .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  justify-content: center;
+  gap: 20px;
+}

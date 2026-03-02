@@ -16,7 +16,13 @@ export default function Home({ search }) {
     setProducts(allProducts);
   }, []);
 
-  const filtered = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+  const filtered = products.filter(p =>
+    p.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const africanFood = products.filter(
+    p => p.category === "africanfood"
+  );
 
   return (
     <div className="home">
@@ -24,6 +30,16 @@ export default function Home({ search }) {
       <StatsBar />
       <CategoryMenu />
       <PromoSection />
+
+      {/* SECTION AFRICAN FOOD 🔥 */}
+      <section className="home-african-food">
+        <h2>🥘 African Food - Spécialités Locales</h2>
+        <div className="products-grid">
+          {africanFood.map(p => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
 
       <section className="home-products">
         <h2>Produits populaires 🛒</h2>

@@ -58,5 +58,46 @@ export const products = [
   { id:1770977876713, name:"Bledina", price:1500, oldPrice:null, category:"laitiers", image:"https://res.cloudinary.com/dbiltufxo/image/upload/v1770977855/gzf1qnxepde5siagzdd4.jpg", stock:54, promo:false },
   { id:1770977923177, name:"Cérélac", price:2500, oldPrice:null, category:"laitiers", image:"https://res.cloudinary.com/dbiltufxo/image/upload/v1770977891/aff04zoww5gzwgi1ke9x.jpg", stock:25, promo:false },
   { id:1770977944705, name:"Nido", price:2500, oldPrice:null, category:"laitiers", image:"https://res.cloudinary.com/dbiltufxo/image/upload/v1770977930/raskrl6ohskt4mxquij4.jpg", stock:32, promo:false },
-  { id:1770977983864, name:"Riz 5KG", price:8000, oldPrice:null, category:"alimentaire", image:"https://res.cloudinary.com/dbiltufxo/image/upload/v1770977958/gwo8r9kftgxd5kvp6gol.jpg", stock:15, promo:false }
+  { id:1770977983864, name:"Riz 5KG", price:8000, oldPrice:null, category:"alimentaire", image:"https://res.cloudinary.com/dbiltufxo/image/upload/v1770977958/gwo8r9kftgxd5kvp6gol.jpg", stock:15, promo:false },
+
+   {
+    id: 1772000000001,
+    name: "Fataya Sénégalais",
+    price: 200,
+    oldPrice: null,
+    category: "africanfood",
+    image: "https://res.cloudinary.com/dbiltufxo/image/upload/v1772444103/zy5uvrr2zr1anhefcbls.jpg",
+    stock: 40,
+    promo: false
+  },
+  {
+    id: 1772000000002,
+    name: "Akara (Beignets haricot)",
+    price: 100,
+    oldPrice: null,
+    category: "africanfood",
+    image: "https://res.cloudinary.com/dbiltufxo/image/upload/v1772444813/pzyim0ngnby8jynyoxf4.jpg",
+    stock: 50,
+    promo: false
+  },
+  {
+    id: 1772000000003,
+    name: "Beignets sucrés",
+    price: 100,
+    oldPrice: null,
+    category: "africanfood",
+    image: "https://res.cloudinary.com/dbiltufxo/image/upload/v1772449009/kbnr9uhtu2e0g3stgspu.jpg",
+    stock: 60,
+    promo: false
+  },
+  {
+    id: 1772000000004,
+    name: "Nems croustillants",
+    price: 250,
+    oldPrice: 800,
+    category: "africanfood",
+    image: "https://res.cloudinary.com/dbiltufxo/image/upload/v1772444030/uwv8dvathcq5ojfvoxac.jpg",
+    stock: 35,
+    promo: true
+  }
 ];
