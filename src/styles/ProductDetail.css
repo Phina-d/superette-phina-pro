@@ -233,3 +233,172 @@
     padding: 2px 6px;
   }
 }
+
+/* --- DETAIL INFO RESPONSIVE --- */
+.detail-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* INFOS PRODUIT */
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Nom et rating */
+.detail-info h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.rating {
+  color: #f59e0b;
+  font-size: 16px;
+}
+
+.price-box {
+  margin: 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.old-price {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Badges */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: white;
+}
+
+.badge.new { background: #2563eb; }
+.badge.promo { background: #dc2626; }
+.badge.stock { background: #16a34a; }
+
+/* Description */
+.detail-info .desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.actions button,
+.actions a {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+  flex: 1;
+  min-width: 140px; /* s’assure que les boutons restent lisibles */
+  text-align: center;
+}
+
+.actions button:nth-child(1) { background: #16a34a; }
+.actions button:nth-child(2) { background: #e11d48; }
+.actions a { background: #25d366; }
+
+.actions button:hover,
+.actions a:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Moyens de paiement */
+.payment-box {
+  margin-top: 20px;
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+  .detail-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .price-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button,
+  .actions a {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-card {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .detail-info h2 {
+    font-size: 24px;
+  }
+
+  .price {
+    font-size: 22px;
+  }
+
+  .old-price {
+    font-size: 14px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .desc {
+    font-size: 13px;
+  }
+}

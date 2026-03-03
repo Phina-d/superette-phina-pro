@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getOrders, updateOrderStatus } from "../../data/ordersManager";
 import { exportOrdersPDF, exportOrdersExcel } from "../../utils/exportUtils";
-import "../../styles/AdminOrders.css"; // <-- lien CSS
-
+import "../../styles/AdminOrders.css";
 
 export default function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -27,55 +26,53 @@ export default function AdminOrders() {
         <button onClick={() => exportOrdersExcel(orders)}>📊 Export Excel</button>
       </div>
 
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Date</th>
-            <th>Total</th>
-            <th>Statut</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.length === 0 ? (
-            <tr>
-              <td colSpan="5">Aucune commande</td>
-            </tr>
-          ) : (
-            orders.map((o) => (
-              <tr key={o.id}>
-                <td>{o.id}</td>
-                <td>{o.date}</td>
-                <td>{o.total || 0} FCFA</td>
-                <td>
-                  <span
-                    className={`admin-status ${
-                      o.status === "Livré"
-                        ? "livre"
-                        : o.status === "Annulé"
-                        ? "annule"
-                        : "en-cours"
-                    }`}
-                  >
-                    {o.status}
-                  </span>
-                </td>
-                <td>
-                  <select
-                    value={o.status}
-                    onChange={(e) => changeStatus(o.id, e.target.value)}
-                  >
-                    <option>En cours</option>
-                    <option>Livré</option>
-                    <option>Annulé</option>
-                  </select>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+      <div className="admin-orders-wrapper">
+        {orders.length === 0 ? (
+          <p>Aucune commande</p>
+        ) : (
+          orders.map((o) => (
+            <div key={o.id} className="admin-order-card">
+              <div className="order-row">
+                <span className="label">ID:</span>
+                <span>{o.id}</span>
+              </div>
+              <div className="order-row">
+                <span className="label">Date:</span>
+                <span>{o.date}</span>
+              </div>
+              <div className="order-row">
+                <span className="label">Total:</span>
+                <span>{o.total || 0} FCFA</span>
+              </div>
+              <div className="order-row">
+                <span className="label">Statut:</span>
+                <span
+                  className={`admin-status ${
+                    o.status === "Livré"
+                      ? "livre"
+                      : o.status === "Annulé"
+                      ? "annule"
+                      : "en-cours"
+                  }`}
+                >
+                  {o.status}
+                </span>
+              </div>
+              <div className="order-row">
+                <span className="label">Action:</span>
+                <select
+                  value={o.status}
+                  onChange={(e) => changeStatus(o.id, e.target.value)}
+                >
+                  <option>En cours</option>
+                  <option>Livré</option>
+                  <option>Annulé</option>
+                </select>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
