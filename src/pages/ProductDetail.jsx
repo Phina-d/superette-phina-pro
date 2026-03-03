@@ -17,10 +17,16 @@ export default function ProductDetail() {
 
     if (p) {
       setActiveImage(p.image);
-      const sim = products.filter(
-        (item) => item.id !== p.id && item.category === p.category
-      );
-      setSimilar(sim.slice(0, 4));
+      // Produits similaires avec badges dynamiques
+      const sim = products
+        .filter((item) => item.id !== p.id && item.category === p.category)
+        .slice(0, 4)
+        .map((s, i) => ({
+          ...s,
+          isNew: i === 0, // Premier produit de la liste = Nouveau
+          isHot: i === 1, // Deuxième produit = Populaire
+        }));
+      setSimilar(sim);
     }
   }, [id]);
 
@@ -39,7 +45,6 @@ export default function ProductDetail() {
         {/* IMAGES */}
         <div className="detail-images">
           <img className="main-image" src={activeImage} alt={product.name} />
-
           <div className="thumbs">
             {[product.image, ...(product.images || [])].map((img, i) => (
               <img
@@ -56,17 +61,13 @@ export default function ProductDetail() {
         {/* INFOS */}
         <div className="detail-info">
           <h2>{product.name}</h2>
-
           <div className="rating">
-            {"⭐".repeat(stars)}
-            <span> ({product.rating || 4}/5)</span>
+            {"⭐".repeat(stars)} <span>({product.rating || 4}/5)</span>
           </div>
 
           <div className="price-box">
             <span className="price">{product.price} FCFA</span>
-            {product.oldPrice && (
-              <span className="old-price">{product.oldPrice} FCFA</span>
-            )}
+            {product.oldPrice && <span className="old-price">{product.oldPrice} FCFA</span>}
           </div>
 
           <div className="badges">
@@ -78,8 +79,7 @@ export default function ProductDetail() {
           </div>
 
           <p className="desc">
-            Produit disponible chez <b>Supérette Chez Phina</b>. Qualité garantie
-            et livraison rapide 🚚.
+            Produit disponible chez <b>Supérette Chez Phina</b>. Qualité garantie et livraison rapide 🚚.
           </p>
 
           <div className="actions">
@@ -102,6 +102,8 @@ export default function ProductDetail() {
       <div className="similar-grid">
         {similar.map((s) => (
           <Link to={`/product/${s.id}`} key={s.id} className="similar-card">
+            {s.isNew && <span className="badge">Nouveau</span>}
+            {s.isHot && <span className="badge">🔥 Populaire</span>}
             <img src={s.image} alt={s.name} />
             <h4>{s.name}</h4>
             <p>{s.price} FCFA</p>

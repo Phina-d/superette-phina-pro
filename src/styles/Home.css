@@ -1,11 +1,13 @@
 .home {
   padding: 30px;
   background: #f8fafc;
+  text-align: center;
 }
 
 .home-products h2 {
   font-size: 28px;
   margin: 20px 0;
+  text-align: center;
 }
 
 .products-grid {

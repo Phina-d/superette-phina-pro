@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getOrders, updateOrderStatus } from "../../data/ordersManager";
 import { exportOrdersPDF, exportOrdersExcel } from "../../utils/exportUtils";
+import "../../styles/AdminOrders.css"; // <-- lien CSS
+
 
 export default function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -17,12 +19,13 @@ export default function AdminOrders() {
   };
 
   return (
-    <div style={{ padding: 30 }}>
+    <div className="admin-page">
       <h2>📦 Commandes</h2>
-<div style={{ marginBottom: 15 }}>
-  <button onClick={() => exportOrdersPDF(orders)}>📄 Export PDF</button>
-  <button onClick={() => exportOrdersExcel(orders)}>📊 Export Excel</button>
-</div>
+
+      <div className="admin-export">
+        <button onClick={() => exportOrdersPDF(orders)}>📄 Export PDF</button>
+        <button onClick={() => exportOrdersExcel(orders)}>📊 Export Excel</button>
+      </div>
 
       <table className="admin-table">
         <thead>
@@ -47,17 +50,13 @@ export default function AdminOrders() {
                 <td>{o.total || 0} FCFA</td>
                 <td>
                   <span
-                    style={{
-                      padding: "5px 10px",
-                      borderRadius: 8,
-                      background:
-                        o.status === "Livré"
-                          ? "#22c55e"
-                          : o.status === "Annulé"
-                          ? "#ef4444"
-                          : "#facc15",
-                      color: "#fff",
-                    }}
+                    className={`admin-status ${
+                      o.status === "Livré"
+                        ? "livre"
+                        : o.status === "Annulé"
+                        ? "annule"
+                        : "en-cours"
+                    }`}
                   >
                     {o.status}
                   </span>

@@ -46,9 +46,9 @@ export default function ProductCard({ product }) {
         <h3 className="product-title">{product.name}</h3>
 
         <p className="price">
-          {price} FCFA
+          {price} F CFA
           {discountPercent > 0 && (
-            <span className="old-price">{oldPrice} FCFA</span>
+            <span className="old-price">{oldPrice} F CFA</span>
           )}
         </p>
 

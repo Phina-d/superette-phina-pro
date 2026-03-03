@@ -1,0 +1,111 @@
+/* ================================
+   AdminOrders.css
+================================ */
+
+/* PAGE */
+.admin-page {
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* TITRE */
+.admin-page h2 {
+  font-size: 28px;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+/* BOUTONS EXPORT */
+.admin-export {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.admin-export button {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #fff;
+  padding: 8px 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-export button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* TABLEAU */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 14px;
+  color: #111827;
+}
+
+.admin-table thead {
+  background: #f3f4f6;
+  font-weight: 700;
+}
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+.admin-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* STATUT */
+.admin-status {
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.admin-status.en-cours { background: #facc15; }
+.admin-status.livre { background: #22c55e; }
+.admin-status.annule { background: #ef4444; }
+
+/* SELECT ACTION */
+.admin-table select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .admin-table th,
+  .admin-table td {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .admin-export button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

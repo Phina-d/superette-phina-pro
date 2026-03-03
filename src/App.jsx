@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 // ===== PAGES ADMIN =====
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -11,7 +12,8 @@ import AdminGuard from "./components/AdminGuard";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Support from "./pages/Support";
 import ScrollTopButton from "./components/ScrollTopButton";
-import AdminOnly from "./components/AdminOnly";
+
+import "react-toastify/dist/ReactToastify.css";
 
 // ===== PAGES CLIENT =====
 import Home from "./pages/Home";
@@ -89,7 +91,10 @@ export default function App() {
           <Route path="clients" element={<AdminClients />} />
         </Route>
       </Routes>
-      
+<>
+  {/* ton app */}
+  <ToastContainer position="bottom-right" autoClose={3000} />
+</>
      <ScrollTopButton />
       <Footer />
     </div>

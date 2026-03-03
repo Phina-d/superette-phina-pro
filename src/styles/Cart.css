@@ -342,3 +342,34 @@
   transform: scale(1.02);
   opacity: 0.9;
 }
+
+.btn-clear-cart {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-clear-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.btn-clear-cart:active {
+  transform: scale(0.97);
+}
+@media (max-width: 768px) {
+  .btn-clear-cart {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

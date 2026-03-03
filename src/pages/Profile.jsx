@@ -29,11 +29,17 @@ useEffect(() => {
 
   const [cartCount, setCartCount] = useState(0);
   const [favCount, setFavCount] = useState(0);
+  const [orderCount, setOrderCount] = useState(0);
 
   useEffect(() => {
     setCartCount(getCart().length);
     setFavCount(getFavorites().length);
   }, []);
+
+  useEffect(() => {
+  const orders = JSON.parse(localStorage.getItem("userOrders")) || [];
+  setOrderCount(orders.length);
+}, []); 
 
   return (
     <div className="profile-page">
@@ -78,7 +84,7 @@ useEffect(() => {
           <p>Favoris</p>
         </div>
         <div className="stat-card">
-          <h3>0</h3>
+          <h3>{orderCount}</h3>
           <p>Commandes</p>
         </div>
       </div>

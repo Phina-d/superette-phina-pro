@@ -77,16 +77,16 @@
 
 /* PRIX */
 .price {
-  font-size: 16px;
-  font-weight: 800;
+  font-size: 10px;
+  font-weight: 300;
   color: #111827;
   display: flex;
-  gap: 8px;
+  gap: 5px;
   align-items: center;
 }
 
 .old-price {
-  font-size: 13px;
+  font-size: 15px;
   color: #9ca3af;
   text-decoration: line-through;
 }

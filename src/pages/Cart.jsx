@@ -4,10 +4,12 @@ import {
   increaseQty,
   decreaseQty,
   removeFromCart,
+  clearCart,
 } from "../data/cartManager";
 import { addOrder } from "../data/ordersManager";
-
+import { toast } from "react-toastify";
 import { CartContext } from "../context/CartContext";
+import { downloadInvoicePDF } from "../utils/invoiceUtils";
 import "../styles/Cart.css";
 
 export default function Cart() {
@@ -47,6 +49,20 @@ export default function Cart() {
   const deliveryFee = deliveryMode === "pickup" ? 0 : zone.price;
   const total = subtotal + deliveryFee;
 
+  // ✅ 🗑️ FONCTION VIDER PANIER
+const handleClearCart = () => {
+  if (!cart.length) {
+    toast.error("Panier déjà vide ❌");
+    return;
+  }
+
+  clearCart();
+  setCart([]);
+  updateCounts();
+
+  toast.success("Panier vidé avec succès 🗑️");
+};
+
   // 💬 WhatsApp message
   const cartList = cart
     .map((p) => `- ${p.name} x${p.qty} = ${p.price * p.qty} FCFA`)
@@ -71,102 +87,48 @@ ${cartList}
     whatsappMessage
   )}`;
 
-  // 🧾 Facture PDF simple (print)
-  const downloadInvoice = () => {
-    const invoiceWindow = window.open("", "_blank");
-    invoiceWindow.document.write(`
-      <html>
-      <head>
-        <title>Facture - Supérette Chez Phina</title>
-        <style>
-          body { font-family: Arial; padding: 20px; }
-          h1 { color: #e11d48; }
-          table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-          th { background: #f3f4f6; }
-        </style>
-      </head>
-      <body>
-        <h1>Supérette Chez Phina</h1>
-        <p><strong>Client:</strong> ${client.name || "Non renseigné"}</p>
-        <p><strong>Téléphone:</strong> ${client.phone || "Non renseigné"}</p>
-        <p><strong>Adresse:</strong> ${client.address || zone.name}</p>
-
-        <h3>Produits</h3>
-        <table>
-          <tr>
-            <th>Produit</th>
-            <th>Qté</th>
-            <th>Prix</th>
-            <th>Total</th>
-          </tr>
-          ${cart
-            .map(
-              (p) => `
-            <tr>
-              <td>${p.name}</td>
-              <td>${p.qty}</td>
-              <td>${p.price} FCFA</td>
-              <td>${p.price * p.qty} FCFA</td>
-            </tr>
-          `
-            )
-            .join("")}
-        </table>
-
-        <h3>Sous-total: ${subtotal} FCFA</h3>
-        <h3>Livraison: ${deliveryFee} FCFA</h3>
-        <h2>Total: ${total} FCFA</h2>
-
-        <script>
-          window.print();
-        </script>
-      </body>
-      </html>
-    `);
-    invoiceWindow.document.close();
-  };
+// 🧾 Facture PDF PREMIUM
+const handleDownloadInvoice = () => {
+  downloadInvoicePDF(cart, client, zone);
+};
 
   const handleSaveOrder = () => {
   if (cart.length === 0) {
-    alert("❌ Panier vide !");
-    return;
-  }
+  toast.error("Panier vide ❌");
+  return;
+}
 
-  if (!client.name || !client.phone) {
-    alert("❌ Veuillez remplir le nom et le téléphone !");
-    return;
-  }
+if (!client.name || !client.phone) {
+  toast.warning("Remplissez nom et téléphone ⚠️");
+  return;
+}
 
-  const newOrder = {
-    id: Date.now(),
-    date: new Date().toLocaleDateString(),
-    client,
-    items: cart,
-    subtotal,
-    deliveryFee,
-    total,
-    status: "En cours",
+    const newOrder = {
+      id: Date.now(),
+      date: new Date().toLocaleDateString(),
+      client,
+      items: cart,
+      subtotal,
+      deliveryFee,
+      total,
+      status: "En cours",
+    };
+
+    addOrder(newOrder);
+
+    const existingOrders =
+      JSON.parse(localStorage.getItem("userOrders")) || [];
+
+    localStorage.setItem(
+      "userOrders",
+      JSON.stringify([...existingOrders, newOrder])
+    );
+
+    clearCart();
+    refresh();
+
+    toast.success("Commande validée avec succès 🎉");
   };
-
-  // ✅ 1️⃣ Enregistrer pour ADMIN
-  addOrder(newOrder);
-
-  // ✅ 2️⃣ Enregistrer pour CLIENT (Mes commandes)
-  const existingOrders =
-    JSON.parse(localStorage.getItem("userOrders")) || [];
-
-  localStorage.setItem(
-    "userOrders",
-    JSON.stringify([...existingOrders, newOrder])
-  );
-
-  // ✅ 3️⃣ Vider le panier
-  localStorage.removeItem("cart");
-  refresh();
-
-  alert("✅ Commande validée avec succès !");
-};
 
   return (
     <div className="cart-page">
@@ -188,23 +150,9 @@ ${cartList}
                 </div>
 
                 <div className="cart-qty">
-                  <button
-                    onClick={() => {
-                      decreaseQty(p.id);
-                      refresh();
-                    }}
-                  >
-                    ➖
-                  </button>
+                  <button onClick={() => { decreaseQty(p.id); refresh(); }}>➖</button>
                   <span>{p.qty}</span>
-                  <button
-                    onClick={() => {
-                      increaseQty(p.id);
-                      refresh();
-                    }}
-                  >
-                    ➕
-                  </button>
+                  <button onClick={() => { increaseQty(p.id); refresh(); }}>➕</button>
                 </div>
 
                 <div className="cart-subtotal">
@@ -213,10 +161,7 @@ ${cartList}
 
                 <button
                   className="cart-remove"
-                  onClick={() => {
-                    removeFromCart(p.id);
-                    refresh();
-                  }}
+                  onClick={() => { removeFromCart(p.id); refresh(); }}
                 >
                   ❌
                 </button>
@@ -310,13 +255,18 @@ ${cartList}
               </div>
             </div>
 
-            <button className="btn-invoice" onClick={downloadInvoice}>
-              🧾 Télécharger la facture PDF
+           <button className="btn-invoice" onClick={handleDownloadInvoice}>
+  🧾 Télécharger la facture PDF
+</button>
+
+            {/* ✅ BOUTON AJOUTÉ ICI */}
+            <button className="btn-clear-cart" onClick={handleClearCart}>
+              🗑️ Vider le panier
             </button>
 
-<button className="btn-save-order" onClick={handleSaveOrder}>
-  ✅ Valider la commande
-</button>
+            <button className="btn-save-order" onClick={handleSaveOrder}>
+              ✅ Valider la commande
+            </button>
 
             <a
               href={whatsappUrl}
